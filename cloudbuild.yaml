@@ -18,7 +18,7 @@ steps:
   - 'gcr.io/$PROJECT_ID/flaskapp:$SHORT_SHA'
   - '--region'
   - 'us-central1'
-  - '--unauthenticated'
+  - '--allow-unauthenticated'
 
 options:
   logging: CLOUD_LOGGING_ONLY
