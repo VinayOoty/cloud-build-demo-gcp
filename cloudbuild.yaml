@@ -1,10 +1,13 @@
-steps
+steps:
+# 1. Build docker image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['image', 'build', '-t', 'gcr.io/$PROJECT_ID/flaskapp:$SHORT_SHA', '.']
 
+# 2. Push the docker image to container registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['image', 'push', 'gcr.io/$PROJECT_ID/flaskapp:$SHORT_SHA']
 
+# 3. Deploy the image to google cloud run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args:
